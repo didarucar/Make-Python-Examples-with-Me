@@ -1,0 +1,56 @@
+ogrenciler={}
+def menu_goster():
+    print("\n--- Öğrenci Not Sistemi---")
+    print("1-Öğrenci Ekle")
+    print("2-Notları Listele:")
+    print("3-En yüksek Not:")
+    print("4-En düşük Not:")
+    print("5-Öğrenci silme:")
+    print("6-Çıkış:")
+
+ogrenciler={}
+while True:
+    menu_goster()
+    secim=input("Seçiminiz:")
+    if secim=='1':
+        ad=input("Öğrenci adı:")
+        notu=int(input("Öğrenci Notu:"))
+        ogrenciler[ad]=notu
+        print("Öğrenci eklendi.")
+    elif secim=='2':
+        if len(ogrenciler)==0:
+            print("Henüz öğrenci yok.")
+        else:
+            for ad,notu in ogrenciler.items():
+                print(ad,":",notu)
+    elif secim=='3':
+        if len(ogrenciler)==0:
+            print("Öğrenci yok.")
+        else:
+            en_yuksek=max(ogrenciler,key=ogrenciler.get)
+            print("En yüksek not:",en_yuksek,"-",ogrenciler[en_yuksek])
+       
+    elif secim=='4':
+        if len(ogrenciler)==0:
+            print("Öğrenci yok.")
+        else:
+            en_dusuk=min(ogrenciler,key=ogrenciler.get)
+            print("En düşük not",en_dusuk,"-",ogrenciler[en_dusuk])
+    elif secim=='5':
+        if len(ogrenciler)==0:
+            print("Silinecek öğrenci yokk.")
+        else:
+            ad=input("Silinecek öğrenci ismi:")
+            if ad in ogrenciler:
+                del ogrenciler[ad]
+                print(ad,"  isimli öğrenci silindi.")
+            else:
+                print("Bu isimde öğrenci bulunamadı.")
+    elif secim =='6':
+        print("Programdan çıkılıyor...")
+        break
+    else:
+        print("Hatalı seçim!")
+    
+        
+    
